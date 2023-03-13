@@ -1,0 +1,60 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.limb.mylibrary",
+    "module": "limbplugin",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "limbplugin-1.0.0.jar",
+          "url": "limbplugin-1.0.0.jar",
+          "size": 1523,
+          "sha512": "dbca9c0269567431a456328ca02722975ef74ff2373e3379e7a537492c35e94bf121ad2748054188fffededfd455e8cd7679a6bf848c9453257326acc532a591",
+          "sha256": "70cd7b08310421b41c6d2e645040ed6f0643674b776b38976546a0d2a4d11fee",
+          "sha1": "9eb1ecff33608cec912d789b5d3376cbf7da4f84",
+          "md5": "c06e56a4831b9c615d46010881fd0988"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "limbplugin-1.0.0.jar",
+          "url": "limbplugin-1.0.0.jar",
+          "size": 1523,
+          "sha512": "dbca9c0269567431a456328ca02722975ef74ff2373e3379e7a537492c35e94bf121ad2748054188fffededfd455e8cd7679a6bf848c9453257326acc532a591",
+          "sha256": "70cd7b08310421b41c6d2e645040ed6f0643674b776b38976546a0d2a4d11fee",
+          "sha1": "9eb1ecff33608cec912d789b5d3376cbf7da4f84",
+          "md5": "c06e56a4831b9c615d46010881fd0988"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish' // 用来发布插件
+}
+//  如果发布到本地，运行 Gradle 命令：
+//  ./gradlew publishPublishPublicationToMavenLocal
+//  则会发布到本地目录 /Users/XXX/.m2/repository/ 中。
+//  ./gradlew publishPublishPublicationToMavenRepository
+//  会发布到你在 build.gradle 中，指定的目录 "$rootDir/repo" 中。
+publishing {
+    repositories {
+        maven {
+            // $rootDir 表示你项目的根目录
+            // 这里配置发布到的本地目录
+            url = "$rootDir/repo"
+        }
+    }
+
+    publications {
+        publish(MavenPublication) {
+            // 插件的组ID，建议设置为插件的包名
+            groupId = 'com.limb.baseplugin'
+            // 插件的名字，后续在引用时会用到
+            artifactId = 'limbplugin'
+            version = '1.0.0'
+            // 组件类型
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    implementation(gradleApi())
+}
+//在很多之前的 Gradle 插件实现方案中，需要创建 resources/META-INF/gradle-plugin/xxx.properties ，而通过上面的方式，不需要在去创建这个文件了。 这样一个插件的定义基本上就完成了。
+gradlePlugin {
+    // Define the plugin
+    plugins {
+        customName {
+            id = 'com.limb.baseplugin'
+            implementationClass = 'com.limb.baseplugin.LimbPlugin'
+        }
+    }
+}
