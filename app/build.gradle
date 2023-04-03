@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.limb.baseplugin'
 }
-
 android {
     namespace 'com.limb.limbpluginproject'
     compileSdk 33
@@ -12,8 +11,8 @@ android {
         applicationId "com.limb.limbpluginproject"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
 
     buildTypes {
@@ -29,8 +28,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-}
 
+    applicationVariants.all{
+        variant -> {
+            variant.outputs.all {
+                outputFileName = "limb-"+variant.buildType.name+"-"+ buildTime()+"-"+getVersionName()+".apk"
+            }
+        }
+    }
+}
+static def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format("YYYY-MM-dd")
+    return formattedDate
+}
 dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

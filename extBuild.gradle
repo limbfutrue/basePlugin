@@ -1,0 +1,45 @@
+task doPrint{
+    description("演示任务doPrint")
+    group("limb-test-task")
+    doFirst{
+        print("---------------------------------------------\n\n\n")
+        println(name + " task execute time "+buildTime())
+        print("doFirst")
+    }
+    doLast{
+        print("doLast")
+        print("\n\n\n---------------------------------------------")
+    }
+}
+
+// 任务依赖，执行doPrint2时会先执行doPrint，然后再执行doPrint2
+task doPrint2(dependsOn:doPrint){
+    group("limb-test-task")
+    doLast{
+        print("doPrint2")
+        print("\n\n\n---------------------------------------------")
+    }
+}
+
+task doPrint3{
+    group("limb-test-task")
+    dependsOn(doPrint,doPrint2)
+    doLast{
+        println("doPrint3--"+age)
+        println("doPrint3--"+time)
+        println("doPrint3--" + work)
+        print("\n\n\n---------------------------------------------")
+    }
+}
+
+static def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format("YYYY/MM/dd HH:mm:ss")
+    return formattedDate
+}
+ext.age = 18
+
+ext{
+    time = '202304021431'
+    work = 'task'
+}
