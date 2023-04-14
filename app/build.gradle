@@ -36,6 +36,10 @@ android {
             }
         }
     }
+
+    viewBinding{
+        enable = true
+    }
 }
 static def buildTime() {
     def date = new Date()
